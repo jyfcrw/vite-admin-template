@@ -1,0 +1,23 @@
+@tailwind utilities;
+
+@import "application/base";
+@import "application/element-override";
+@import "application/utility";
+
+.page {
+  width: 100%;
+}
+
+.page-bd {
+  padding: 15px 0;
+  @include clearfix;
+}
+
+.page-hd {
+  @include clearfix;
+}
+
+.page-ft {
+  padding: 15px 0;
+  @include clearfix;
+}

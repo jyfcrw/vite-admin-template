@@ -1,0 +1,18 @@
+.el-pagination {
+  font-weight: 400; 
+  padding: 0;
+}
+
+.el-date-editor .el-range-separator {
+  width: auto;
+}
+
+.el-table-border-none {
+  &:before {
+    height: 0 !important;
+  }
+
+  td {
+    border-bottom: none !important;
+  }
+}
