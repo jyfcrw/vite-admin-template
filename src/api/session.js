@@ -14,7 +14,7 @@ export function logout() {
 }
 
 export function refresh() {
-  return request.put('/session', {
+  return request.put('/session', null, {
     withRefreshToken: true
   })
 }

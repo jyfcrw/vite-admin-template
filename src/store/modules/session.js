@@ -22,11 +22,11 @@ const getters = {
 }
 
 const actions = {
-  refreshAccessToken({ commit }) {
-    refresh().then((data) => {
-      console.log('data: ', data)
-      // TODO:
-    })
+  async refreshAccessToken({ state, commit }) {
+    const { code, data=null } = await refresh()
+    if (code === 0) {
+      commit('setToken', { ...state.token, ...data })
+    }
   }
 }
 

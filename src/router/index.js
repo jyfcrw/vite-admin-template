@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import store from '@/store'
 
 /* Layout */
@@ -35,20 +36,25 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
-  // instead of having to check every route record with
-  // to.matched.some(record => record.meta.requiresAuth)
-  // console.log(to)
-  const authenticated = store.getters['isAuthenticated']
-
-  if (authenticated) {
+  if (store.getters['isAuthenticated']) {
     if (to.name === 'Login') {
       return { path: to.query?.redirect || '/' }
     }
   }
 
-  if (!authenticated && to.meta.requiresAuth) {
-    // if (store.getters['canRefreshAccessToken']) {
-    // }
+  if (!store.getters['isAuthenticated'] && to.meta.requiresAuth) {
+    if (store.getters['canRefreshAccessToken']) {
+      await store.dispatch('session/refreshAccessToken')
+      if (store.getters['isAuthenticated']) {
+        return true
+      }
+    }
+
+    ElMessage({
+      message: '认证已过期，请重新登录',
+      type: 'error',
+      duration: 5 * 1000
+    })
 
     return {
       path: '/login',

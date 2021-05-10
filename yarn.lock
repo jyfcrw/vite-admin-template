@@ -3022,6 +3022,11 @@ restore-cursor@^3.1.0:
     onetime "^5.1.0"
     signal-exit "^3.0.2"
 
+retry-axios@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.npm.taobao.org/retry-axios/download/retry-axios-2.4.0.tgz#b5da2afed8dd0134c73c86206e1d1881d7c66a67"
+  integrity sha1-tdoq/tjdATTHPIYgbh0YgdfGamc=
+
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/reusify/download/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
